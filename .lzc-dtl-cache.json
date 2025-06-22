@@ -1,0 +1,46 @@
+{
+  "name": "BookLore",
+  "package": "xyz.mxue.booklore",
+  "description": "BookLore 是一款用于在家庭服务器上托管和管理图书的网络应用。它允许用户查看 PDF、电子书并跟踪阅读进度。BookLore 具有元数据管理和阅读统计等功能，可让您轻松地组织和探索个人图书馆。",
+  "homepage": "https://github.com/adityachandelgit/BookLore",
+  "author": "adityachandelgit",
+  "app_features": [],
+  "subdomain": "booklore",
+  "version": "0.0.1",
+  "iconPath": "lzc-app-icon.png",
+  "composePath": "docker-compose.yml",
+  "unsupported_platforms": [],
+  "lastRouteType": "from_compose",
+  "port_mappings": {
+    "booklore_6060_6060": {
+      "use": true,
+      "type": "http",
+      "path": "/",
+      "targetPath": "/"
+    }
+  },
+  "image_xxmymxue_booklore-app_v0.0.24": {
+    "originalImage": "xxmymxue/booklore-app:v0.0.24",
+    "pushTarget": "lazycat",
+    "newImageName": "registry.lazycat.cloud/mxuexxmy/xxmymxue/booklore-app:5c55228edb64f05d",
+    "timestamp": "2025-03-16T03:31:37.543Z"
+  },
+  "booklore_volume_/app/data_action": "emptyDir",
+  "booklore_volume_/app/data_location": "app_data",
+  "booklore_volume_/books_action": "emptyDir",
+  "booklore_volume_/books_location": "app_data",
+  "image_lscr.io_linuxserver_mariadb_11.4.5": {
+    "originalImage": "lscr.io/linuxserver/mariadb:11.4.5",
+    "pushTarget": "lazycat",
+    "newImageName": "registry.lazycat.cloud/mxuexxmy/linuxserver/mariadb:e39b18d6d85cc989",
+    "timestamp": "2025-03-16T03:32:22.036Z"
+  },
+  "mariadb_volume_/config_action": "emptyDir",
+  "mariadb_volume_/config_location": "app_data",
+  "image_ghcr.io_adityachandelgit_booklore-app_latest": {
+    "originalImage": "ghcr.io/adityachandelgit/booklore-app:latest",
+    "pushTarget": "lazycat",
+    "newImageName": "registry.lazycat.cloud/mxuexxmy/adityachandelgit/booklore-app:2f85053608be455c",
+    "timestamp": "2025-03-25T15:34:22.287Z"
+  }
+}

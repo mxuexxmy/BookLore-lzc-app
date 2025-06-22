@@ -1,0 +1,47 @@
+lzc-sdk-version: "0.1"
+name: BookLore
+package: xyz.mxue.booklore
+version: 0.0.1
+description: BookLore 是一款用于在家庭服务器上托管和管理图书的网络应用。它允许用户查看 PDF、电子书并跟踪阅读进度。BookLore
+  具有元数据管理和阅读统计等功能，可让您轻松地组织和探索个人图书馆。
+homepage: https://github.com/adityachandelgit/BookLore
+author: adityachandelgit
+application:
+  subdomain: booklore
+  background_task: false
+  multi_instance: false
+  gpu_accel: false
+  kvm_accel: false
+  usb_accel: false
+  routes:
+    - /=http://booklore.xyz.mxue.booklore.lzcapp:6060/
+services:
+  booklore:
+    image: registry.lazycat.cloud/mxuexxmy/adityachandelgit/booklore-app:2f85053608be455c
+    environment:
+      - BOOKLORE_IMAGE_TAG=latest
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - MYSQL_ROOT_PASSWORD=BookLore
+      - BOOKLORE_DATA_PATH=/path/to/booklore/data
+      - BOOKLORE_BOOKS_PATH=/path/to/booklore/books
+      - MARIADB_CONFIG_PATH=/path/to/mariadb/config
+    depends_on:
+      - mariadb
+    binds:
+      - /lzcapp/var/data:/app/data
+      - /lzcapp/var/books:/books
+  mariadb:
+    image: registry.lazycat.cloud/mxuexxmy/linuxserver/mariadb:e39b18d6d85cc989
+    environment:
+      - BOOKLORE_IMAGE_TAG=latest
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - MYSQL_ROOT_PASSWORD=BookLore
+      - BOOKLORE_DATA_PATH=/path/to/booklore/data
+      - BOOKLORE_BOOKS_PATH=/path/to/booklore/books
+      - MARIADB_CONFIG_PATH=/path/to/mariadb/config
+    binds:
+      - /lzcapp/var/config:/config
