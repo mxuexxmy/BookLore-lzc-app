@@ -1,7 +1,7 @@
 lzc-sdk-version: "0.1"
 name: BookLore
 package: xyz.mxue.booklore
-version: 0.0.1
+version: 0.0.2
 description: BookLore 是一款用于在家庭服务器上托管和管理图书的网络应用。它允许用户查看 PDF、电子书并跟踪阅读进度。BookLore
   具有元数据管理和阅读统计等功能，可让您轻松地组织和探索个人图书馆。
 homepage: https://github.com/adityachandelgit/BookLore
@@ -17,7 +17,7 @@ application:
     - /=http://booklore.xyz.mxue.booklore.lzcapp:6060/
 services:
   booklore:
-    image: registry.lazycat.cloud/mxuexxmy/adityachandelgit/booklore-app:2f85053608be455c
+    image: registry.lazycat.cloud/mxuexxmy/adityachandelgit/booklore-app:a9fddd7101e19532
     environment:
       - BOOKLORE_IMAGE_TAG=latest
       - PUID=1000
